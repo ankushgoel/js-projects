@@ -7,11 +7,16 @@ const randomColor = function () {
   return color;
 };
 
+const setBGColor = function() {
+    document.body.style.backgroundColor = randomColor();
+}
+
 let changeColorInterval;
 const startChangingColor = function () {
-  changeColorInterval = setInterval(function () {
-    document.body.style.backgroundColor = randomColor();
-  }, 1000);
+  if (!changeColorInterval) {
+    setBGColor()
+    changeColorInterval = setInterval(setBGColor, 1000);
+  }
 };
 
 const stopChangingColor = function () {
